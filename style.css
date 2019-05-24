@@ -1,0 +1,56 @@
+* {
+   margin: 0;
+   border: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+.contenitore {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.cambia_mese {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.avanti,
+.indietro {
+  width: 500px;
+  height: 30px;
+  background-color: #e6ffed;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.month {
+  height: 5%;
+
+}
+
+.day {
+  height: 80%;
+}
+
+
+.numero_giorni {
+  display: flex;
+  margin: 5px 0;
+  width: 100px;
+  padding: 5px;
+  background-color: #e6f7ff;
+  justify-content: center;
+
+
+}

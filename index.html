@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js" type="text/javascript"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="contenitore">
+      <div class="cambia_mese">
+        <button type="button" name="button" class="avanti">Avanti</button>
+          <button type="button" name="button" class="indietro">Indietro</button>
+      </div>
+      <div class="month">
+
+      </div>
+      <div class="day">
+
+      </div>
+
+    </div>
+    <script id="entry-template" type="text/x-handlebars-template">
+      <h1>{{titolo}}</h1>
+      <li class="numero_giorni">{{giorni}}</li>
+
+    </script>
+    </script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
