@@ -4,12 +4,12 @@ $(document).ready(function()  {
 
   var moment_date = moment(date);
   var month = moment_date.month();
-  console.log(month);
+  // console.log(month);
   var mese = moment_date.format('MMMM');
-  console.log(mese);
+  // console.log(mese);
   var giorni = moment_date.daysInMonth();
 
-  console.log(giorni);
+  // console.log(giorni);
 
   var source = $("#entry-template").html();
   var template_function = Handlebars.compile(source);
@@ -31,10 +31,14 @@ $(document).ready(function()  {
   $('.month').append(html2);
 
 
-  // $('.avanti').click(function()
-  //  if (month < 12 ){
-  //   month = moment_date.month(+1);
-  // });
+  $('.avanti').click(function() {
+
+    if (month < 12 ) {
+      month = moment_date.add(1, 'month').format('MMMM');
+      console.log(month);
+    }
+
+  });
 
 
 });
