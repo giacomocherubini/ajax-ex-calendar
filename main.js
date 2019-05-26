@@ -1,44 +1,89 @@
 $(document).ready(function()  {
 
-  var date = '2018-01-01';
+  $.ajax({
+    'url': 'https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0',
+    'method': 'GET',
+    'data': {
 
-  var moment_date = moment(date);
-  var month = moment_date.month();
-  // console.log(month);
-  var mese = moment_date.format('MMMM');
-  // console.log(mese);
-  var giorni = moment_date.daysInMonth();
+    },
+    'success': function(data) {
+      console.log(data);
 
-  // console.log(giorni);
+      var source = $("#entry-template").html();
+      var template_function = Handlebars.compile(source);
 
-  var source = $("#entry-template").html();
-  var template_function = Handlebars.compile(source);
+      var date = '2018-01-01';
+      var moment_date = moment(date);
 
-  for (var i = 0; i < giorni; i++) {
+      var min_date = '2018-01-01';
+      var max_date = '2018-12-01';
 
-    var giorno = {
-      'giorni' : parseInt(i+1)
-    };
-    var html = template_function(giorno);
-    $('.day').append(html);
-  }
+       disegna_mese(moment_date);
 
-  var scritta_mese = {
-    titolo: mese
-  };
+      function disegna_mese(current_date) {
+        // resetto il contenitore del calendario
+        $('.day').html('');
+      // leggo quanti giorni ci sono nel mese corrente
+      var giorni = moment_date.daysInMonth();
 
-  var html2 = template_function(scritta_mese);
-  $('.month').append(html2);
+      var mese = moment_date.format('MMMM');
+      var month = moment_date.month();
+      $('.month').text(mese + ' ' + '2018');
 
 
-  $('.avanti').click(function() {
+      for (var i = 0; i < giorni; i++) {
 
-    if (month < 12 ) {
-      month = moment_date.add(1, 'month').format('MMMM');
-      console.log(month);
+        var giorno = {
+          'giorni_calendario' : parseInt(i+1)
+        };
+
+        var festivita = {
+          'giorni_calendario': giorno,
+          'giorno_iso': moment_date.format('YYYY-MM-') + (i)
+        }
+
+        var html = template_function(giorno);
+        $('.day').append(html);
+      };
     }
 
+    function format_day(day) {
+      if (day < 10) {
+        return '0' + day
+      }
+      return day;
+    }
+
+      $('.avanti').click(function() {
+        console.log('ciao');
+        console.log(moment_date.format('MMMM'));
+        if (moment_date.isSameOrAfter(max_date)) {
+          alert('mese non possibile');
+          $(this).attr('disabled', true);
+        } else {
+          moment_date.add(1, 'months').format('MMMM');
+          disegna_mese(moment_date)
+          $(this).attr('disabled', false);
+          $('.indietro').attr('disabled', false);
+        }
+      });
+
+      $('.indietro').click(function() {
+        console.log('ciao');
+        console.log(moment_date.format('MMMM'));
+        if (moment_date.isSameOrBefore(min_date)) {
+          alert('mese non possibile');
+          $(this).attr('disabled', true);
+        } else {
+          moment_date.subtract(1, 'months').format('MMMM');
+          disegna_mese(moment_date)
+          $(this).attr('disabled', false);
+          $('.avanti').attr('disabled', false);
+        }
+      });
+
+    'error': function() {
+      alert('si e verificato un errore');
+    }
   });
-
-
 });

@@ -36,6 +36,8 @@
 
 .month {
   height: 5%;
+  font-size: 30px;
+  font-weight: bold;
 
 }
 
@@ -51,6 +53,4 @@
   padding: 5px;
   background-color: #e6f7ff;
   justify-content: center;
-
-
 }
