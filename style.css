@@ -49,14 +49,13 @@
 .numero_giorni {
   display: flex;
   margin: 5px 0;
-  width: 100px;
+  width: 200px;
   padding: 5px;
   background-color: #e6f7ff;
   justify-content: center;
 }
 
 .festivita {
-  font-size: 20px;
   color: red;
   font-weight: bold;
 }
