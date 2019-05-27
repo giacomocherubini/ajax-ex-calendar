@@ -54,3 +54,9 @@
   background-color: #e6f7ff;
   justify-content: center;
 }
+
+.festivita {
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+}
